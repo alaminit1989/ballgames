@@ -9,21 +9,26 @@ let down = getId('btnbottom')
 
 let cv = getId('canvas')
 let ball = getId('ball')
-
+var id = null
 
 left.addEventListener('click', function (event) {
+    clearInterval(id)
     changBall(left)
 })
 right.addEventListener('click', function (event) {
+    clearInterval(id)
     changBall(right)
+
 })
 
 top.addEventListener('click', function (event) {
+    clearInterval(id)
     changBall(top)
 })
 
 down.addEventListener('click', function (event) {
-    changBall(down)
+    clearInterval(id)
+    changBall(down)    
 })
 
 let x = 0
@@ -33,11 +38,13 @@ function changBall(ballvalue) {
 
     if (ballvalue === left) {
 
-        var id = setInterval(leftball, 100)
+        id = setInterval(leftball, 100)
         function leftball() {
             if (x <= 0) {
-                alert("error")
+                alert("Game is over")
                 clearInterval(id)
+                ball.style.left = 0 + 'px'
+                ball.style.top = 0 + 'px'
             } else {
                 x = x - 5
                 ball.style.left = x + 'px'
@@ -46,11 +53,13 @@ function changBall(ballvalue) {
     }
     if (ballvalue === right) {
         
-        var id = setInterval(rightball, 100)
+        id = setInterval(rightball, 100)
         function rightball() {
             if (x >= 263) {
-                alert("error")
+                alert("Game is over")
                 clearInterval(id)
+                ball.style.left = 0 + 'px'
+                ball.style.top = 0 + 'px'
             } else {
                 x = x + 5
                 ball.style.left = x + 'px'
@@ -59,11 +68,13 @@ function changBall(ballvalue) {
     }
     if (ballvalue === top) {
 
-        var id = setInterval(topball, 100)
+        id = setInterval(topball, 100)
         function topball() {
             if (y <= 0) {
-                alert("error")
+                alert("Game is over")
                 clearInterval(id)
+                ball.style.left = 0 + 'px'
+                ball.style.top = 0 + 'px'
             } else {
                 y = y - 5
                 ball.style.top = y + 'px'
@@ -72,11 +83,13 @@ function changBall(ballvalue) {
     }
     if (ballvalue === down) {
 
-        var id = setInterval(downball, 100)
+        id = setInterval(downball, 100)
         function downball(){
             if (y >= 263) {
-                alert("error")
+                alert("Game is over")
                 clearInterval(id)
+                ball.style.left = 0 + 'px'
+                ball.style.top = 0 + 'px'
             } else {
                 y = y + 5
                 ball.style.top = y + 'px'
